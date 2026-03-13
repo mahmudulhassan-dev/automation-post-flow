@@ -1,47 +1,47 @@
-# AmanaFlow Owned Automation Platform
+# AmanaFlow Owned Automation Platform (Go Core)
 
-এটা এখন আপনার **নিজস্ব system codebase** — শুধু UI না, billing + payment + channel + admin feature control সহ Docker stack।
+This repository is now your **own platform codebase** with a fast Go backend/worker stack.
+You do not need to develop business logic in HTML/CSS/JavaScript anymore.
 
 ## Stack
-- `web/` : frontend (user + admin panel)
-- `api/` : backend API (pricing, channels, payment session, billing activation)
-- `worker/` : auto-renew background job
-- `docker-compose.yml` : db + redis + api + worker + web
+- `cmd/api` - Go API service (pricing, channels, billing, payment session, admin settings)
+- `cmd/worker` - Go auto-renew worker
+- `internal/db` - SQL schema + seed logic
+- `web/` - optional web UI and admin panel
+- `docker-compose.yml` - Postgres + Redis + Go API + Go worker + Nginx web
 
-## Core capabilities (current)
-- Branding: custom logo + favicon + Bangla-first UI
-- Channel integration records: user-wise channel connect/list
-- Pricing পরিকল্পনা + payment session API
-- Gateways: SSLCommerz / bKash / Nagad config structure
-- Billing lifecycle: subscription create, activate, cancel, list
-- Auto-renew worker: due renewal invoice issue/simulate charge
-- Admin panel: API auth token + 160+ feature toggle + settings store
+## Core capabilities
+- Brand assets (logo + favicon)
+- User/channel integration records
+- Pricing plans and subscription lifecycle
+- Payment session flow for SSLCommerz, bKash, Nagad
+- Billing activation and cancellation
+- Auto-renew invoice generation worker
+- Admin summary, settings groups, and 160+ feature flags
 
 ## Quick start
 1. `copy .env.example .env`
-2. `.env` এ password/token দিন
+2. Set strong values in `.env`
 3. `docker compose up -d --build`
-4. Web: `http://127.0.0.1:8088`
-5. Admin page এ API URL + admin token দিয়ে connect করুন
+4. Open web: `http://127.0.0.1:8088`
+5. API health: `http://127.0.0.1:8080/api/health`
 
-## Demo endpoints
+## API examples
 - `GET /api/health`
 - `GET /api/plans`
 - `POST /api/channels`
 - `POST /api/payments/session`
 - `POST /api/billing/activate`
-- `GET /api/admin/features` (admin token required)
+- `GET /api/admin/features` (requires `x-admin-token`)
+
+## Upstream strategy (Postiz)
+We do controlled intake, not direct replacement:
+1. Pull latest release metadata using `scripts/check-postiz-upstream.ps1`
+2. Select needed ideas/features
+3. Implement in your own Go architecture
 
 ## Documents
 - `docs/docker-setup-bn.md`
 - `docs/customization-bn.md`
 - `docs/deployment-bn.md`
 - `docs/upstream-sync-postiz-bn.md`
-
-## Upstream update strategy
-Postiz-এর update আর direct code replace না করে controlled intake:
-- `scripts/check-postiz-upstream.ps1` দিয়ে latest release note pull
-- দরকারি feature নিজ architecture এ integrate
-
----
-এই repo এখন **Automation Post Flow** নামে fully ownable foundation; production hardening (auth JWT/RBAC, real payment callbacks, OAuth connectors, observability) next phase হিসেবে planned।

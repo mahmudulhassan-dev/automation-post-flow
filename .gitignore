@@ -18,5 +18,3 @@ audit_report_*.log
 
 # node
 node_modules/
-api/node_modules/
-worker/node_modules/

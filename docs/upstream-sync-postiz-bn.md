@@ -1,21 +1,25 @@
-# Postiz আপডেট আমাদের সিস্টেমে আনার স্ট্র্যাটেজি
+# Postiz Upstream Sync Strategy (Owned Codebase)
 
-আমরা এখন **নিজস্ব কোডবেস** চালাবো। Postiz থেকে direct copy না করে controlled intake করবো।
+We keep this platform fully owned.  
+So we do **controlled intake** from Postiz updates (not direct copy-paste replacement).
 
 ## Workflow
-1. `scripts/check-postiz-upstream.ps1` চালিয়ে latest release metadata আনুন।
-2. release note দেখে relevant module list তৈরি করুন (UI, scheduler, integrations, billing impact)।
-3. শুধুমাত্র দরকারি ধারণা/প্যাটার্ন `api/`, `worker/`, `web/` এ নিজের architecture অনুযায়ী implement করুন।
-4. নতুন feature merge করার আগে smoke test করুন:
+1. Run `scripts/check-postiz-upstream.ps1` to fetch latest release metadata.
+2. Read release note and mark relevant modules (integrations, scheduler, billing ideas).
+3. Re-implement useful changes in:
+   - `cmd/api`
+   - `cmd/worker`
+   - `web`
+4. Run smoke tests before merge:
    - payment session
    - subscription activation
-   - auto-renew worker
-   - channel connect flow
+   - auto-renew cycle
+   - channel connect/list flow
 
-## কেন এই approach
-- vendor lock-in কমে
-- নিজের branding + product direction কন্ট্রোল থাকে
-- breaking changes isolate করা সহজ হয়
+## Why this model
+- No vendor lock-in
+- Full control over branding and roadmap
+- Safer handling of breaking changes
 
 ## Command
 ```powershell
