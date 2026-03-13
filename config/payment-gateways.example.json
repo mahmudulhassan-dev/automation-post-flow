@@ -1,0 +1,21 @@
+{
+  "sslcommerz": {
+    "enabled": false,
+    "store_id": "",
+    "store_password": "",
+    "success_url": "https://post.amanaflow.com/payments/ssl/success",
+    "fail_url": "https://post.amanaflow.com/payments/ssl/fail"
+  },
+  "bkash": {
+    "enabled": false,
+    "app_key": "",
+    "app_secret": "",
+    "callback_url": "https://post.amanaflow.com/payments/bkash/callback"
+  },
+  "nagad": {
+    "enabled": false,
+    "merchant_id": "",
+    "public_key": "",
+    "callback_url": "https://post.amanaflow.com/payments/nagad/callback"
+  }
+}

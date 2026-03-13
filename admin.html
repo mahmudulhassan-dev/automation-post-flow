@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanaflow Admin Control Center</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/amanaflow-favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <a href="index.html" class="brand compact">
+        <img src="assets/img/amanaflow-logo.svg" alt="Amanaflow logo" />
+        <span>Amanaflow</span>
+      </a>
+      <button class="tab-btn active" data-tab="brand" type="button">Brand Studio</button>
+      <button class="tab-btn" data-tab="ai" type="button">AI Engine</button>
+      <button class="tab-btn" data-tab="automation" type="button">Automation Rules</button>
+      <button class="tab-btn" data-tab="payments" type="button">Payment Setup</button>
+      <button class="tab-btn" data-tab="features" type="button">Feature Lab (160+)</button>
+      <a class="btn btn-ghost" href="index.html">← Back to Site</a>
+    </aside>
+
+    <main class="admin-main">
+      <section id="tab-brand" class="admin-tab active">
+        <h1>Brand Studio</h1>
+        <div class="admin-cards">
+          <article class="panel">
+            <h3>Brand Identity</h3>
+            <p>Brand Name, tagline, এবং Accent color update করুন।</p>
+            <form id="brandForm" class="stack-form">
+              <label>Brand Name <input name="brandName" value="Amanaflow" /></label>
+              <label>Tagline <input name="tagline" value="Automation that feels human" /></label>
+              <label>Primary Color <input name="primary" type="color" value="#0ea5a8" /></label>
+              <button class="btn btn-primary" type="submit">Save Brand Config</button>
+            </form>
+          </article>
+          <article class="panel">
+            <h3>Live Assets</h3>
+            <div class="asset-row">
+              <img src="assets/img/amanaflow-logo.svg" alt="Amanaflow Logo" />
+              <img class="favicon-preview" src="assets/img/amanaflow-favicon.svg" alt="Amanaflow favicon" />
+            </div>
+            <p>Logo এবং Favicon root level এ apply করা আছে।</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="tab-ai" class="admin-tab">
+        <h1>AI Engine Settings</h1>
+        <div class="admin-cards">
+          <article class="panel">
+            <h3>Model Routing</h3>
+            <label>Primary Model
+              <select id="primaryModel">
+                <option>gemini-2.5-pro</option>
+                <option>gpt-5-mini</option>
+                <option>claude-opus-4.1</option>
+                <option>deepseek-r1</option>
+              </select>
+            </label>
+            <label>Fallback Model
+              <select id="fallbackModel">
+                <option>gpt-5-mini</option>
+                <option>gemini-2.5-pro</option>
+                <option>claude-opus-4.1</option>
+              </select>
+            </label>
+            <label>Auto Reply Delay (sec)
+              <input id="replyDelay" type="number" min="2" max="10" value="6" />
+            </label>
+          </article>
+          <article class="panel">
+            <h3>Generation Presets</h3>
+            <ul class="clean-list">
+              <li>বাংলা conversational tone</li>
+              <li>Campaign launch tone</li>
+              <li>Customer support short reply</li>
+              <li>Lead qualification reply</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="tab-automation" class="admin-tab">
+        <h1>Automation Rules</h1>
+        <div class="admin-cards">
+          <article class="panel">
+            <h3>Message SLA</h3>
+            <p>Minimum delay 2 sec, Maximum delay 10 sec.</p>
+            <label>Minimum <input id="minDelay" type="number" min="2" max="10" value="2" /></label>
+            <label>Maximum <input id="maxDelay" type="number" min="2" max="10" value="10" /></label>
+          </article>
+          <article class="panel">
+            <h3>Queue & Retry Policy</h3>
+            <label>Max retries <input id="maxRetries" type="number" min="0" max="10" value="3" /></label>
+            <label>Cooldown (seconds) <input id="cooldown" type="number" min="5" max="300" value="45" /></label>
+          </article>
+        </div>
+      </section>
+
+      <section id="tab-payments" class="admin-tab">
+        <h1>Payment Setup (BD)</h1>
+        <div class="admin-cards">
+          <article class="panel">
+            <h3>SSLCommerz</h3>
+            <label>Store ID <input placeholder="ssl_store_id" /></label>
+            <label>Store Password <input type="password" placeholder="ssl_store_password" /></label>
+            <label>Success URL <input value="https://post.amanaflow.com/payments/ssl/success" /></label>
+          </article>
+          <article class="panel">
+            <h3>bKash</h3>
+            <label>App Key <input placeholder="bkash_app_key" /></label>
+            <label>App Secret <input type="password" placeholder="bkash_app_secret" /></label>
+            <label>Callback URL <input value="https://post.amanaflow.com/payments/bkash/callback" /></label>
+          </article>
+          <article class="panel">
+            <h3>Nagad</h3>
+            <label>Merchant ID <input placeholder="nagad_merchant_id" /></label>
+            <label>Public Key <input placeholder="nagad_public_key" /></label>
+            <label>Callback URL <input value="https://post.amanaflow.com/payments/nagad/callback" /></label>
+          </article>
+        </div>
+      </section>
+
+      <section id="tab-features" class="admin-tab">
+        <h1>Feature Lab</h1>
+        <p>Admin থেকে 160+ ফিচার enable/disable করার control center.</p>
+        <div class="feature-lab-controls">
+          <input id="featureSearch" placeholder="Feature search..." />
+          <button id="exportConfig" class="btn btn-ghost" type="button">Export JSON</button>
+          <span id="featureCounter"></span>
+        </div>
+        <div id="featureGrid" class="feature-lab-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>

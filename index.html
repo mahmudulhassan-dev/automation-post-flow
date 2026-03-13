@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmanaFlow | Automation Post Flow</title>
+  <meta name="description" content="Amanaflow branded social automation platform with AI workflows and admin controls." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/amanaflow-favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/img/amanaflow-favicon.svg" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="bg-shape bg-shape-one"></div>
+  <div class="bg-shape bg-shape-two"></div>
+
+  <header class="topbar container">
+    <a href="index.html" class="brand">
+      <img src="assets/img/amanaflow-logo.svg" alt="Amanaflow logo" />
+      <span>Amanaflow</span>
+    </a>
+    <nav>
+      <a href="#features" data-i18n="navFeatures">ফিচার</a>
+      <a href="#pricing" data-i18n="navPricing">প্রাইসিং</a>
+      <a href="admin.html" data-i18n="navAdmin">অ্যাডমিন</a>
+    </nav>
+    <div class="actions">
+      <button id="langToggle" class="btn btn-ghost" type="button">EN</button>
+      <a class="btn btn-primary" href="admin.html" data-i18n="openAdmin">Open Admin</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">Amanaflow Brand Engine</p>
+        <h1 data-i18n="heroTitle">বাংলা-ফার্স্ট সোশ্যাল অটোমেশন প্ল্যাটফর্ম</h1>
+        <p class="lead" data-i18n="heroLead">
+          এক জায়গা থেকে পোস্ট তৈরি, শিডিউল, এআই অটো-রিপ্লাই, পেমেন্ট এবং মাল্টি-চ্যানেল কন্ট্রোল করুন।
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#composer" data-i18n="startNow">এখনই শুরু</a>
+          <a class="btn btn-ghost" href="admin.html" data-i18n="manageSettings">সেটিংস ম্যানেজ</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 data-i18n="quickStatus">Quick Status</h3>
+        <ul>
+          <li><span data-i18n="statusAi">AI Models</span> <b>8</b></li>
+          <li><span data-i18n="statusChannels">Connected Channels</span> <b>26</b></li>
+          <li><span data-i18n="statusFeatures">Admin Controls</span> <b>160+</b></li>
+          <li><span data-i18n="statusLanguage">Language</span> <b>BN / EN</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="composer" class="panel">
+      <div class="panel-head">
+        <h2 data-i18n="composerTitle">AI Post Auto-Generation</h2>
+        <p data-i18n="composerSubtitle">মডেল সিলেক্ট করে 2-10 সেকেন্ড delay সহ অটো-রিপ্লাই তৈরি করুন।</p>
+      </div>
+      <div class="composer-grid">
+        <div>
+          <label for="prompt" data-i18n="promptLabel">আপনার পোস্টের আইডিয়া</label>
+          <textarea id="prompt" rows="5" placeholder="আজকের অফার, ক্যাম্পেইন বা কাস্টমার প্রশ্ন লিখুন..."></textarea>
+
+          <div class="inline-controls">
+            <div>
+              <label for="model" data-i18n="modelLabel">AI Model</label>
+              <select id="model">
+                <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
+                <option value="gpt-5-mini">GPT-5 Mini</option>
+                <option value="claude-opus-4.1">Claude Opus 4.1</option>
+                <option value="deepseek-r1">DeepSeek R1</option>
+              </select>
+            </div>
+            <div>
+              <label for="delay" data-i18n="delayLabel">Reply Delay</label>
+              <input id="delay" type="range" min="2" max="10" value="5" />
+              <small><span id="delayValue">5</span> sec</small>
+            </div>
+          </div>
+          <button id="generateBtn" class="btn btn-primary" type="button" data-i18n="generateBtn">Generate Post</button>
+        </div>
+        <div>
+          <label data-i18n="resultLabel">Generated Content</label>
+          <div id="generatedPost" class="result-box" data-i18n="resultPlaceholder">এখানে AI generated পোস্ট দেখা যাবে...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="panel">
+      <div class="panel-head">
+        <h2 data-i18n="featureTitle">Core Platform Features</h2>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <h3 data-i18n="f1Title">Smart Channel Publishing</h3>
+          <p data-i18n="f1Body">Facebook, Instagram, Threads, YouTube, Google Business, TikTok, Telegram সহ মাল্টি-চ্যানেল পোস্টিং।</p>
+        </article>
+        <article>
+          <h3 data-i18n="f2Title">AI Workflow Controls</h3>
+          <p data-i18n="f2Body">Model routing, auto-reply rules, tone profiles, delay windows, guardrails।</p>
+        </article>
+        <article>
+          <h3 data-i18n="f3Title">Business Payment Ready</h3>
+          <p data-i18n="f3Body">SSLCommerz, bKash, Nagad configuration blocks, webhook and callback structure।</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="panel">
+      <div class="panel-head">
+        <h2 data-i18n="pricingTitle">SaaS Pricing</h2>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <h3>Starter</h3>
+          <p class="price">৳1499/mo</p>
+          <ul>
+            <li data-i18n="starter1">10 channels</li>
+            <li data-i18n="starter2">AI post generator</li>
+            <li data-i18n="starter3">বাংলা content templates</li>
+          </ul>
+        </article>
+        <article class="price-card highlight">
+          <h3>Growth</h3>
+          <p class="price">৳4999/mo</p>
+          <ul>
+            <li data-i18n="growth1">Unlimited channels</li>
+            <li data-i18n="growth2">Auto DM workflows</li>
+            <li data-i18n="growth3">bKash/Nagad checkout</li>
+          </ul>
+        </article>
+        <article class="price-card">
+          <h3>Enterprise</h3>
+          <p class="price">Custom</p>
+          <ul>
+            <li data-i18n="ent1">White-label branding</li>
+            <li data-i18n="ent2">Custom AI model policies</li>
+            <li data-i18n="ent3">Dedicated onboarding</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span id="year"></span> Amanaflow Automation Post Flow</p>
+    <a href="admin.html" data-i18n="footerAdmin">Admin Panel</a>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

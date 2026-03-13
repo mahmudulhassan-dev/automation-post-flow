@@ -1,0 +1,14 @@
+# system
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+
+# local media dumps
+audit_report_*.log
+*.mp4
+
+# temp
+*.tmp
+*.bak
