@@ -12,3 +12,11 @@ audit_report_*.log
 # temp
 *.tmp
 *.bak
+
+# env
+.env
+
+# node
+node_modules/
+api/node_modules/
+worker/node_modules/

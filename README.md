@@ -1,33 +1,47 @@
-# AmanaFlow Automation Post Flow
+# AmanaFlow Owned Automation Platform
 
-Amanaflow ব্র্যান্ডের জন্য কাস্টম SaaS-style social automation UI।
+এটা এখন আপনার **নিজস্ব system codebase** — শুধু UI না, billing + payment + channel + admin feature control সহ Docker stack।
 
-## কি আছে
-- নতুন **logo + favicon**
-- modern dashboard UI (বাংলা + English toggle)
-- post auto-generation panel (AI model + reply delay 2-10s)
-- dedicated **Admin Panel** (`/admin.html`)
-- 160+ configurable feature switches (Feature Lab)
-- payment settings blocks: **SSLCommerz, bKash, Nagad**
-- mock backend API stubs (`/backend/mock-server.js`)
+## Stack
+- `web/` : frontend (user + admin panel)
+- `api/` : backend API (pricing, channels, payment session, billing activation)
+- `worker/` : auto-renew background job
+- `docker-compose.yml` : db + redis + api + worker + web
 
-## দ্রুত চালু করবেন
+## Core capabilities (current)
+- Branding: custom logo + favicon + Bangla-first UI
+- Channel integration records: user-wise channel connect/list
+- Pricing পরিকল্পনা + payment session API
+- Gateways: SSLCommerz / bKash / Nagad config structure
+- Billing lifecycle: subscription create, activate, cancel, list
+- Auto-renew worker: due renewal invoice issue/simulate charge
+- Admin panel: API auth token + 160+ feature toggle + settings store
 
-### Option 1: Python HTTP server
-```bash
-python -m http.server 4173
-```
-তারপর ব্রাউজারে খুলুন:
-- http://127.0.0.1:4173/index.html
-- http://127.0.0.1:4173/admin.html
+## Quick start
+1. `copy .env.example .env`
+2. `.env` এ password/token দিন
+3. `docker compose up -d --build`
+4. Web: `http://127.0.0.1:8088`
+5. Admin page এ API URL + admin token দিয়ে connect করুন
 
-### Option 2: Node mock API
-```bash
-node backend/mock-server.js
-```
-Default API server: `http://127.0.0.1:5050`
+## Demo endpoints
+- `GET /api/health`
+- `GET /api/plans`
+- `POST /api/channels`
+- `POST /api/payments/session`
+- `POST /api/billing/activate`
+- `GET /api/admin/features` (admin token required)
 
-## গুরুত্বপূর্ণ নোট
-- পেমেন্ট gateway live করতে production credentials দরকার (merchant key, app key, callback URL, signature validation)।
-- এই version এ frontend + config + mock API প্রস্তুত।
-- Postiz core source না থাকায় direct core patch করা যায়নি; এই repo এখন custom SaaS shell হিসেবে ready।
+## Documents
+- `docs/docker-setup-bn.md`
+- `docs/customization-bn.md`
+- `docs/deployment-bn.md`
+- `docs/upstream-sync-postiz-bn.md`
+
+## Upstream update strategy
+Postiz-এর update আর direct code replace না করে controlled intake:
+- `scripts/check-postiz-upstream.ps1` দিয়ে latest release note pull
+- দরকারি feature নিজ architecture এ integrate
+
+---
+এই repo এখন **Automation Post Flow** নামে fully ownable foundation; production hardening (auth JWT/RBAC, real payment callbacks, OAuth connectors, observability) next phase হিসেবে planned।
